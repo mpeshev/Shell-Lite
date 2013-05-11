@@ -1,0 +1,99 @@
+(08/07/2011)
+- IE7 Dropdown Menu: Fix for disappearing menu over images.
+- Long Titles Menu: Fix for menu with longer titles.
+- Blog Section: Adjustment for (You're in all Blogs Section).
+- Modernizr: Update from v1.7 to v2.0.6.
+- Child Theme: Shell Child Theme style.css correction.
+
+(09/10/2011)
+For more control over Child Themes we decided to add unique IDs to:
+
+- archive.php #content-archive
+- blog.php #content-blog
+- images.php: #content-images
+
+These changes should not affect your Theme in any way because the grid class
+still remains the same and they will change only if you add styles to them.
+
+- shell-child-theme.zip: is now removed because the it was not needed. You
+still have regular non-zip Child Theme sample included.
+- blog-excerpt.php Template was added for user who does not want full posts.
+blog-excerpt will shorten your post and include "See more" link. And if you
+still want full posts simply use blog.php Template instead.
+- PHP headings filesource had wp-content/shell instead of wp-content/shell-lite.
+This does not affect nor changes anything, it's just to avoid confusion.
+- Post Data CSS margin-top:20px was added.
+- Author Meta (Author's Box) was added. The meta will display once you enter
+your Biographical Info, otherwise it will not display.
+- Textdomain bugs in comments.php, footer.php and functions.php
+- Modernizr version bug fixed.
+
+(09/18/2011)
+- Shell is now translation-ready, please see /shell-lite/languages/ folder.
+You can use Codestyling Localization Plugin and start translating Shell
+into your own language: http://wordpress.org/extend/plugins/codestyling-localization/
+
+- Bug fix in functions.php
+require_once ( get_template_directory() . '/includes/hooks.php' ); was not needed
+because we're calling hooks directly from /includes/functions.php
+
+(01/01/2012)
+- Page navigation update for search.php
+
+(02/18/2012)
+- footer.php translation bug fix
+- style.css #content-full and #content margin-top:11px (whitespace reduction)
+- .featured-title color removal, margin-top:5px added
+- sidebar-home.php added clear names for all three widgets
+- nicer featured-button.png added
+- featured-image.jpg replacement
+- default-logo.png replacement
+- watermark for search box removal
+- placeholder text and JS added
+- copyright year updated to 2012
+- JS validation removal
+- Modernizr update
+- Child Theme example removal
+- localization fixes
+- /shell-lite/includes/images (empty folder) removal
+
+(03/22/2012)
+- Featured button IE8 fix
+- Language translation fix for various pages
+- blog-excerpt.php sidebar bug
+- global $more; $more = 0; for blog.php to get the_excerpt working if needed
+- bbPress breadcrumb compatibility patch by Dan Smith keystonedatabase.com
+
+(04/16/2012)
+- Breadcrumb Lists rewrite due to unknown disappearing lists 
+- WordPress 3.4 add_theme_support('custom-background') w/backward compatibilities
+- WordPress 3.4 add_theme_support('custom-header') w/backward compatibilities
+- Blog Templates paged issues bug fix
+
+(04/22/2012)
+- Breadcrumb List chevron was not displaying
+  correctly on Windows based systems
+
+(04/24/2012)
+- Another breadcrumb list fix
+
+(06/08/2012)
+- 3.4 upgraded and < 3.4 backward compatibilities
+
+(06/08/2012)
+- small CSS change for 100% image width
+
+(02/18/2013)
+Version was changed to 1.7.0
+- Featured Image - Added option to change Homepage Featured Image
+- Icons - YouTube icon was added.
+- footer.php - Footer links updated
+- header.php - Fix Stylesheet including recomendations by WordPress Theme Mentor plugin ( http://wordpress.org/extend/plugins/theme-mentor/ )
+- blog.php and blog-excerpt.php - now they are using WP_Query instead of query_posts and Featured image size was fixed to the thumbnail.
+- added max-width to images in sidebar to avoid overlapping the site
+
+(05/10/2013)
+Version was changed to 1.7.1
+- Minor CSS changes
+	- Fixing Search Form in Widgets
+	- Fixing Custom Menu Widget background
