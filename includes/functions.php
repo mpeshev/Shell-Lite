@@ -6,7 +6,7 @@
  * @file           functions.php
  * @package        WordPress 
  * @subpackage     Shell 
- * @author          Emil Uzelac, nofearinc 
+ * @author         Emil Uzelac, nofearinc 
  * @copyright      2003 - 2012 ThemeID, 2013 DevWP
  * @license        license.txt
  * @version        Release: 1.1
@@ -19,9 +19,9 @@
 /**
  * Fire up the engines boys and girls let's start theme setup.
  */
-add_action('after_setup_theme', 'shell_setup');
+add_action( 'after_setup_theme', 'shell_setup' );
 
-if (!function_exists('shell_setup')):
+if ( ! function_exists( 'shell_setup' ) ):
 
     function shell_setup() {
 
@@ -30,7 +30,7 @@ if (!function_exists('shell_setup')):
         /**
          * Global content width.
          */
-        if (!isset($content_width))
+        if ( ! isset( $content_width ) )
             $content_width = 550;
 
         /**
@@ -54,42 +54,42 @@ if (!function_exists('shell_setup')):
          * This feature enables post and comment RSS feed links to head.
          * @see http://codex.wordpress.org/Function_Reference/add_theme_support#Feed_Links
          */
-        add_theme_support('automatic-feed-links');
+        add_theme_support( 'automatic-feed-links' );
 
         /**
          * This feature enables post-thumbnail support for a theme.
          * @see http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
          */
-        add_theme_support('post-thumbnails');
+        add_theme_support( 'post-thumbnails' );
 		
         /**
          * This feature enables custom-menu support for a theme.
          * @see http://codex.wordpress.org/Template_Tags/register_nav_menu
          */	
-		register_nav_menu('primary', __('Primary Menu', 'shell'));
+		register_nav_menu( 'primary', __( 'Primary Menu', 'shell' ) );
 
         // WordPress 3.4+
-		if ( function_exists('get_custom_header')) {
+		if ( function_exists( 'get_custom_header' ) ) {
 			
-        add_theme_support('custom-background');
+        	add_theme_support('custom-background');
 		
 		} else {
 		
-		// Backward Compatibility
-		
-		/**
-         * This feature allows users to use custom background for a theme.
-         * @see http://codex.wordpress.org/Function_Reference/add_custom_background
-         */
-		
-        add_custom_background();
+			// Backward Compatibility
+			
+			/**
+	         * This feature allows users to use custom background for a theme.
+	         * @see http://codex.wordpress.org/Function_Reference/add_custom_background
+	         */
+			
+	        add_custom_background();
 		
 		}
 
 		// WordPress 3.4+
-		if (function_exists('get_custom_header')) {
+		if ( function_exists( 'get_custom_header' ) ) {
 			
-		add_theme_support('custom-header', array (
+		add_theme_support( 'custom-header', array (
 	        // Header image default
 	       'default-image'			=> get_template_directory_uri() . '/images/default-logo.png',
 	        // Header text display default
@@ -97,21 +97,24 @@ if (!function_exists('shell_setup')):
 	        // Header image flex width
 		   'flex-width'             => true,
 	        // Header image width (in pixels)
-	       'width'				    => 300,
+	       'width'				    => 200,
 		    // Header image flex height
 		   'flex-height'            => true,
 	        // Header image height (in pixels)
 	       'height'			        => 100,
 	        // Admin header style callback
-	       'admin-head-callback'	=> 'shell_admin_header_style'));
+	       'admin-head-callback'	=> 'shell_admin_header_style' 
+		));
 		   
 		// gets included in the admin header
         function shell_admin_header_style() {
-            ?><style type="text/css">
+        ?>
+        	<style type="text/css">
                 .appearance_page_custom-header #headimg {
-					border:none;
+					border: none;
 				}
-             </style><?php
+             </style>
+		<?php
         }
 	   
 	    } else {
@@ -123,28 +126,31 @@ if (!function_exists('shell_setup')):
 		 * In our case we are using this to display logo.
          * @see http://codex.wordpress.org/Function_Reference/add_custom_image_header
          */
-        define('HEADER_TEXTCOLOR', '');
-        define('HEADER_IMAGE', '%s/images/default-logo.png'); // %s is the template dir uri
-        define('HEADER_IMAGE_WIDTH', 300); // use width and height appropriate for your theme
-        define('HEADER_IMAGE_HEIGHT', 100);
-        define('NO_HEADER_TEXT', true);
+        define( 'HEADER_TEXTCOLOR', '' );
+        define( 'HEADER_IMAGE', '%s/images/default-logo.png' ); // %s is the template dir uri
+        define( 'HEADER_IMAGE_WIDTH', 300 ); // use width and height appropriate for your theme
+        define( 'HEADER_IMAGE_HEIGHT', 100 );
+        define( 'NO_HEADER_TEXT', true );
 		
 		
 		// gets included in the admin header
         function shell_admin_header_style() {
-            ?><style type="text/css">
+        ?>
+        	<style type="text/css">
                 #headimg {
-	                background-repeat:no-repeat;
-                    border:none !important;
-                    width:<?php echo HEADER_IMAGE_WIDTH; ?>px;
-                    height:<?php echo HEADER_IMAGE_HEIGHT; ?>px;
+	                background-repeat: no-repeat;
+                    border: none !important;
+                    width: <?php echo HEADER_IMAGE_WIDTH; ?>px;
+                    height: <?php echo HEADER_IMAGE_HEIGHT; ?>px;
                 }
-             </style><?php
+             </style>
+		<?php
          }
          
-		 add_custom_image_header('', 'shell_admin_header_style');
+		 add_custom_image_header( '', 'shell_admin_header_style' );
 		
 	    }
+	    
     }
 
 endif;
@@ -152,7 +158,7 @@ endif;
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
  */
-function shell_page_menu_args($args) {
+function shell_page_menu_args( $args ) {
 	$args['show_home'] = true;
 	return $args;
 }
@@ -170,13 +176,16 @@ add_filter( 'wp_page_menu_args', 'shell_page_menu_args' );
 function shell_comment_count( $count ) {  
 	if ( ! is_admin() ) {
 		global $id;
-		$comments_by_type = &separate_comments(get_comments('status=approve&post_id=' . $id));
-		return count($comments_by_type['comment']);
+		// Old one... was here before Version 1.8.0
+		//$comments_by_type = separate_comments( get_comments( 'status=approve&post_id=' . $id ) );
+		$comments = get_comments( 'status=approve&post_id=' . $id );
+		$comments_by_type = separate_comments( $comments );
+		return count( $comments_by_type['comment'] );
 	} else {
 		return $count;
 	}
 }
-add_filter('get_comments_number', 'shell_comment_count', 0);
+add_filter( 'get_comments_number', 'shell_comment_count', 0 );
 
 /**
  * wp_list_comments() Pings Callback
@@ -194,49 +203,49 @@ function shell_comment_list_pings( $comment ) {
  * Sets the post excerpt length to 40 characters.
  * Next few lines are adopted from Coraline
  */
-function shell_excerpt_length($length) {
+function shell_excerpt_length( $length ) {
     return 40;
 }
 
-add_filter('excerpt_length', 'shell_excerpt_length');
+add_filter( 'excerpt_length', 'shell_excerpt_length' );
 
 /**
  * Returns a "See more" link for excerpts
  */
 function shell_see_more() {
-    return ' <a href="' . get_permalink() . '">' . __('<div class="see-more">See more &#8250;</div><!-- end of .see-more -->', 'shell') . '</a>';
+    return ' <a href="' . get_permalink() . '">' . __( '<div class="see-more">See more &#8250;</div><!-- end of .see-more -->', 'shell' ) . '</a>';
 }
 
 /**
  * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and shell_see_more_link().
  */
-function shell_auto_excerpt_more($more) {
+function shell_auto_excerpt_more( $more ) {
     return '<span class="ellipsis">&hellip;</span>' . shell_see_more();
 }
 
-add_filter('excerpt_more', 'shell_auto_excerpt_more');
+add_filter( 'excerpt_more', 'shell_auto_excerpt_more' );
 
 /**
  * Adds a pretty "See more" link to custom post excerpts.
  */
-function shell_custom_excerpt_more($output) {
-    if (has_excerpt() && !is_attachment()) {
+function shell_custom_excerpt_more( $output ) {
+    if ( has_excerpt() && ! is_attachment() ) {
         $output .= shell_see_more();
     }
     return $output;
 }
 
-add_filter('get_the_excerpt', 'shell_custom_excerpt_more');
+add_filter( 'get_the_excerpt', 'shell_custom_excerpt_more' );
 
 
 /**
  * This function removes inline styles set by WordPress gallery.
  */
-function shell_remove_gallery_css($css) {
-    return preg_replace("#<style type='text/css'>(.*?)</style>#s", '', $css);
+function shell_remove_gallery_css( $css ) {
+    return preg_replace( "#<style type='text/css'>(.*?)</style>#s", '', $css );
 }
 
-add_filter('gallery_style', 'shell_remove_gallery_css');
+add_filter( 'gallery_style', 'shell_remove_gallery_css' );
 
 
 /**
@@ -262,7 +271,7 @@ function shell_breadcrumb_lists () {
   $before = '<span class="breadcrumb-current">'; // tag before the current crumb
   $after = '</span>'; // tag after the current crumb
  
-  if ( !is_home() && !is_front_page() || is_paged() ) {
+  if ( ! is_home() && ! is_front_page() || is_paged() ) {
  
     echo '<div class="breadcrumb-list">';
  
@@ -274,10 +283,14 @@ function shell_breadcrumb_lists () {
       global $wp_query;
       $cat_obj = $wp_query->get_queried_object();
       $thisCat = $cat_obj->term_id;
-      $thisCat = get_category($thisCat);
+      $thisCat = get_category( $thisCat );
       $parentCat = get_category($thisCat->parent);
-      if ($thisCat->parent != 0) echo(get_category_parents($parentCat, TRUE, ' ' . $chevron . ' '));
-      echo $before . __('Archive for ','shell') . single_cat_title('', false) . $after;
+      
+      if ( $thisCat->parent != 0 ) {
+		echo( get_category_parents( $parentCat, TRUE, ' ' . $chevron . ' ' ) );
+      }
+      
+      echo $before . __( 'Archive for ','shell' ) . single_cat_title( '', false ) . $after;
  
     } elseif ( is_day() ) {
       echo '<a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a> ' . $chevron . ' ';
@@ -443,8 +456,33 @@ function shell_breadcrumb_lists () {
 	
     add_action('widgets_init', 'shell_widgets_init');
     
-    add_action('wp_enqueue_scripts', 'shell_enqueue_style_css');
+    add_action( 'wp_enqueue_scripts', 'shell_enqueue_style_css' );
     function shell_enqueue_style_css() {
-        wp_enqueue_style('style', get_stylesheet_uri());
+        wp_enqueue_style( 'style', get_stylesheet_uri() );
     }
+    
+    add_action( 'admin_enqueue_scripts', 'shell_enqueue_admin_style_css' );
+    function shell_enqueue_admin_style_css() {
+		wp_enqueue_style( 'admin-style', get_template_directory_uri() . '/styles/admin-style.css' );
+    }
+    
+    add_action( 'admin_enqueue_scripts', 'shell_enqueue_admin_theme_options_js' );
+	function shell_enqueue_admin_theme_options_js() {
+		wp_enqueue_script( 'theme-options', get_template_directory_uri() . '/js/theme-options.js' );
+		
+		// Add WordPress Media button support
+		wp_enqueue_media();
+		wp_enqueue_script( 'featured-img-uploader', get_template_directory_uri() . '/js/featured-img-uploader.js', array( 'jquery' ) );
+    }
+    
+    /*
+     * Hide Shell Lite Notice Message
+     */
+    add_action( 'wp_ajax_store_ajax_value', 'store_ajax_value' );
+    function store_ajax_value() {
+		update_option( 'shell_lite_dismiss_notice' , true );
+
+		die();
+	}
+   
 ?>

@@ -6,7 +6,7 @@
  * @file           comments.php
  * @package        WordPress 
  * @subpackage     Shell 
- * @author          Emil Uzelac, nofearinc
+ * @author         Emil Uzelac, nofearinc
  * @copyright      2003 - 2012 ThemeID, 2013 DevWP
  * @license        license.txt
  * @version        Release: 1.0

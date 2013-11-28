@@ -6,8 +6,8 @@
  *
  * @file           blog-excerpt.php
  * @package        WordPress 
- * @subpackage     Highlander
- * @author          Emil Uzelac, nofearinc
+ * @subpackage     Shell
+ * @author         Emil Uzelac, nofearinc
  * @copyright      2003 - 2012 ThemeID, 2013 DevWP
  * @license        license.txt
  * @version        Release: 1.0
@@ -34,27 +34,27 @@
         
             <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 
-                <h1><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php printf(__('Permanent Link to %s', 'shell'), the_title_attribute('echo=0')); ?>"><?php the_title(); ?></a></h1>
+                <h1><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php printf( __( 'Permanent Link to %s', 'shell' ), the_title_attribute( 'echo=0' ) ); ?>"><?php the_title(); ?></a></h1>
                 
                 <div class="post-meta">
                 <?php 
-                    printf( __( '<span class="%1$s">Posted on</span> %2$s by %3$s', 'shell' ),'meta-prep meta-prep-author',
-		            sprintf( '<a href="%1$s" title="%2$s" rel="bookmark">%3$s</a>',
-			            get_permalink(),
-			            esc_attr( get_the_time() ),
-			            get_the_date()
-		            ),
-		            sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
-			            get_author_posts_url( get_the_author_meta( 'ID' ) ),
-			        sprintf( esc_attr__( 'View all posts by %s', 'shell' ), get_the_author() ),
-			            get_the_author()
+                    printf( __( '<span class="%1$s">Posted on</span> %2$s by %3$s', 'shell' ), 'meta-prep meta-prep-author',
+			            sprintf( '<a href="%1$s" title="%2$s" rel="bookmark">%3$s</a>',
+				            get_permalink(),
+				            esc_attr( get_the_time() ),
+				            get_the_date()
+			            ),
+			            sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
+				            get_author_posts_url( get_the_author_meta( 'ID' ) ),
+			        	sprintf( esc_attr__( 'View all posts by %s', 'shell' ), get_the_author() ),
+			            	get_the_author()
 		                )
 			        );
 		        ?>
 				    <?php if ( comments_open() ) : ?>
                         <span class="comments-link">
                         <span class="mdash">&mdash;</span>
-                    <?php comments_popup_link( __('No Comments &darr;', 'shell' ), __( '1 Comment &darr;', 'shell' ), __( '% Comments &darr;', 'shell' ) ); ?>
+                    <?php comments_popup_link( __( 'No Comments &darr;', 'shell' ), __( '1 Comment &darr;', 'shell' ), __( '% Comments &darr;', 'shell' ) ); ?>
                         </span>
                     <?php endif; ?> 
                 </div><!-- end of .post-meta -->
@@ -62,7 +62,7 @@
                 <div class="post-entry">
                     <?php if ( has_post_thumbnail() ) : ?>
                         <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
-                    		<?php the_post_thumbnail('thumbnail', array('class' => 'alignleft')); ?>
+                    		<?php the_post_thumbnail( 'thumbnail', array( 'class' => 'alignleft' ) ); ?>
                         </a>
                     <?php endif; ?>
                     <?php the_excerpt(); ?>

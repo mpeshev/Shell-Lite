@@ -3,7 +3,7 @@ Theme Name: Shell Lite
 Theme URI: http://devwp.eu/project/shell-lite/
 Description: Shell is a fully featured translation ready premium-like WordPress Theme. Shell is suitable for a serious Bloggers as well as Business Owners because it is a CMS Theme with fully customizable landing page which features proper SEO structure, Theme Options manageable content, call-to-action button and more. It is also great starting point for Theme Developers or users who need to save time when building Themes. Use Shell as your Parent Theme and expand your work via 10 built-in action hooks. Currently Shell offers three custom Templates: Blog, Sitemap and Full Width Page. Shell requires latest version of WordPress and Child Theme for any personal customizations.
 
-Version: 1.7.0
+Version: 1.8.0
 Author: nofearinc 
 Author URI: http://devwp.eu
 Tags: white, black, gray, custom-menu, custom-header, custom-background, two-columns, fixed-width, theme-options, threaded-comments, translation-ready 
@@ -41,7 +41,8 @@ ol, ul {
 }
 
 blockquote, q {
-	quotes:none;
+	quotes: none;
+	font-style: italic;
 }
 
 blockquote:before, blockquote:after, q:before, q:after {
@@ -584,8 +585,10 @@ form div {
 	margin:42px 33px 0 0;
 }
 
-#header .twitter-icon, 
-#header .facebook-icon, 
+#header .twitter-icon,
+#header .facebook-icon,
+#header .wordpress-icon,
+#header .github-icon, 
 #header .linkedin-icon,
 #header .youtube-icon,
 #header .rss-icon {
@@ -607,9 +610,13 @@ form div {
 	background:#fff;
 	margin-bottom:11px;
 	margin-top:11px;
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
 }
 
 #content-archive {
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
 }
 
 #content-blog {
@@ -780,6 +787,15 @@ form div {
 	font-size:12px;
 }
 
+.post {
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;	
+}
+
+.post img {
+	max-width: 100%;
+}
+
 .post-data {
 	clear:both;
 	font-size:11px;
@@ -828,7 +844,9 @@ form div {
 /* =Widgets
 -------------------------------------------------------------- */
 #widgets {
-	margin-top:44px;
+	margin-top: 44px;
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
 }
 
 #widgets img {
@@ -836,7 +854,7 @@ form div {
 }
 
 #widgets a {
-	display:inline-block;
+	/*display:inline-block;*/
 	margin:0;
 	padding:3px;
 	text-decoration:none;
@@ -1142,6 +1160,8 @@ form div {
 .breadcrumb-list {
 	color:#959595;
 	font-size:12px;
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
 }
 
 /* =Comments

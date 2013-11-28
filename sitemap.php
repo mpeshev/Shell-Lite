@@ -7,7 +7,7 @@
  * @file           sitemap.php
  * @package        WordPress 
  * @subpackage     Shell 
- * @author          Emil Uzelac, nofearinc
+ * @author         Emil Uzelac, nofearinc
  * @copyright      2003 - 2012 ThemeID, 2013 DevWP
  * @license        license.txt
  * @version        Release: 1.0
@@ -18,13 +18,19 @@
 ?>
 <?php get_header(); ?>
 
-        <div id="content-sitemap" class="grid col-940">
-        
-<?php if (have_posts()) : ?>
+<?php $options = get_option( 'shell_theme_options' ); ?>
 
-		<?php while (have_posts()) : the_post(); ?>
+<div id="content-sitemap" class="grid col-940">
         
-        <?php if (function_exists('shell_breadcrumb_lists')) shell_breadcrumb_lists(); ?>
+	<?php if ( have_posts() ) : ?>
+
+		<?php while ( have_posts() ) : the_post(); ?>
+        
+        	<?php
+	        if ( function_exists( 'shell_breadcrumb_lists' ) && ( isset( $options['breadcrumbs'] ) && $options['breadcrumbs'] == 'true' ) ) {
+	        	shell_breadcrumb_lists(); 
+	        }
+	        ?>
         
             <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <h1><?php the_title(); ?></h1> 
@@ -94,8 +100,8 @@
         <h6><?php _e( 'You can return', 'shell' ); ?> <a href="<?php echo home_url(); ?>/" title="<?php esc_attr_e( 'home', 'shell' ); ?>"><?php _e( '&#9166; Home', 'shell' ); ?></a> <?php _e( 'or search for the page you were looking for', 'shell' ); ?></h6>
         <?php get_search_form(); ?>
 
-<?php endif; ?>  
+	<?php endif; ?>
       
-        </div><!-- end of #content-sitemap -->
+</div><!-- end of #content-sitemap -->
 
 <?php get_footer(); ?>

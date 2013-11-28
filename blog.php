@@ -7,7 +7,7 @@
  * @file           blog.php
  * @package        WordPress 
  * @subpackage     Shell 
- * @author          Emil Uzelac, nofearinc
+ * @author         Emil Uzelac, nofearinc
  * @copyright      2003 - 2012 ThemeID, 2013 DevWP
  * @license        license.txt
  * @version        Release: 1.2
@@ -32,7 +32,7 @@
         
             <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 
-                <h1><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php printf(__('Permanent Link to %s', 'shell'), the_title_attribute('echo=0')); ?>"><?php the_title(); ?></a></h1>
+                <h1><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php printf( __( 'Permanent Link to %s', 'shell' ), the_title_attribute( 'echo=0' ) ); ?>"><?php the_title(); ?></a></h1>
                 
                 <div class="post-meta">
                 <?php 
@@ -52,7 +52,7 @@
 				    <?php if ( comments_open() ) : ?>
                         <span class="comments-link">
                         <span class="mdash">&mdash;</span>
-                    <?php comments_popup_link(__('No Comments &darr;', 'shell'), __('1 Comment &darr;', 'shell'), __('% Comments &darr;', 'shell')); ?>
+                    <?php comments_popup_link( __( 'No Comments &darr;', 'shell' ), __( '1 Comment &darr;', 'shell' ), __( '% Comments &darr;', 'shell' ) ); ?>
                         </span>
                     <?php endif; ?> 
                 </div><!-- end of .post-meta -->
@@ -60,24 +60,24 @@
                 <div class="post-entry">
                     <?php if ( has_post_thumbnail()) : ?>
                         <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
-                    		<?php the_post_thumbnail('thumbnail', array('class' => 'alignleft')); ?>
+                    		<?php the_post_thumbnail( 'thumbnail', array( 'class' => 'alignleft' ) ); ?>
                         </a>
                     <?php endif; ?>
-                    <?php the_content(__('See more &#8250;', 'shell')); ?>
-                    <?php wp_link_pages(array('before' => '<div class="pagination">' . __('Pages:', 'shell'), 'after' => '</div>')); ?>
+                    <?php the_content( __( 'See more &#8250;', 'shell' ) ); ?>
+                    <?php wp_link_pages( array( 'before' => '<div class="pagination">' . __( 'Pages:', 'shell' ), 'after' => '</div>' ) ); ?>
                 </div><!-- end of .post-entry -->
                 
                 <div class="post-data">
-				    <?php the_tags(__('Tagged with:', 'shell') . ' ', ', ', '<br />'); ?> 
-					<?php printf(__('Posted in %s', 'shell'), get_the_category_list(', ')); ?> 
+				    <?php the_tags( __( 'Tagged with:', 'shell' ) . ' ', ', ', '<br />' ); ?> 
+					<?php printf( __( 'Posted in %s', 'shell' ), get_the_category_list( ', ' ) ); ?> 
                 </div><!-- end of .post-data -->             
 
-            <div class="post-edit"><?php edit_post_link(__('Edit', 'shell')); ?></div>               
+            <div class="post-edit"><?php edit_post_link( __( 'Edit', 'shell' ) ); ?></div>               
             </div><!-- end of #post-<?php the_ID(); ?> -->
             
         <?php endwhile; ?> 
         
-        <?php if (  $wp_query->max_num_pages > 1 ) : ?>
+        <?php if ( $wp_query->max_num_pages > 1 ) : ?>
         <div class="navigation">
 			<div class="previous"><?php next_posts_link( __( '&#8249; Older posts', 'shell' ) ); ?></div>
             <div class="next"><?php previous_posts_link( __( 'Newer posts &#8250;', 'shell' ) ); ?></div>
@@ -86,8 +86,8 @@
 
 	    <?php else : ?>
 
-        <h1 class="title-404"><?php _e('404 &#8212; Fancy meeting you here!', 'shell'); ?></h1>
-        <p><?php _e('Don\'t panic, we\'ll get through this together. Let\'s explore our options here.', 'shell'); ?></p>
+        <h1 class="title-404"><?php _e( '404 &#8212; Fancy meeting you here!', 'shell' ); ?></h1>
+        <p><?php _e( 'Don\'t panic, we\'ll get through this together. Let\'s explore our options here.', 'shell' ); ?></p>
         <h6><?php _e( 'You can return', 'shell' ); ?> <a href="<?php echo home_url(); ?>/" title="<?php esc_attr_e( 'home', 'shell' ); ?>"><?php _e( '&#9166; Home', 'shell' ); ?></a> <?php _e( 'or search for the page you were looking for', 'shell' ); ?></h6>
         <?php get_search_form(); ?>
         

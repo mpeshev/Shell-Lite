@@ -6,7 +6,7 @@
  * @file           archive.php
  * @package        WordPress 
  * @subpackage     Shell 
- * @author          Emil Uzelac, nofearinc 
+ * @author         Emil Uzelac, nofearinc 
  * @copyright      2003 - 2012 ThemeID, 2013 DevWP
  * @license        license.txt
  * @version        Release: 1.1
@@ -17,25 +17,31 @@
 ?>
 <?php get_header(); ?>
 
-        <div id="content-archive" class="grid col-620">
+<?php $options = get_option( 'shell_theme_options' ); ?>
 
-<?php if (have_posts()) : ?>
+<div id="content-archive" class="grid col-620">
+
+	<?php if ( have_posts() ) : ?>
         
-            <?php if (function_exists('shell_breadcrumb_lists')) shell_breadcrumb_lists(); ?>
+		<?php
+        if ( function_exists( 'shell_breadcrumb_lists' ) && ( isset( $options['breadcrumbs'] ) && $options['breadcrumbs'] == 'true' ) ) {
+        	shell_breadcrumb_lists(); 
+        }
+        ?>
         
-		    <h6>
-			    <?php if ( is_day() ) : ?>
-				    <?php printf( __( 'Daily Archives: %s', 'shell' ), '<span>' . get_the_date() . '</span>' ); ?>
-				<?php elseif ( is_month() ) : ?>
-					<?php printf( __( 'Monthly Archives: %s', 'shell' ), '<span>' . get_the_date( 'F Y' ) . '</span>' ); ?>
-				<?php elseif ( is_year() ) : ?>
-					<?php printf( __( 'Yearly Archives: %s', 'shell' ), '<span>' . get_the_date( 'Y' ) . '</span>' ); ?>
-				<?php else : ?>
-					<?php _e( 'Blog Archives', 'shell' ); ?>
-				<?php endif; ?>
-			</h6>
+	    <h6>
+		    <?php if ( is_day() ) : ?>
+			    <?php printf( __( 'Daily Archives: %s', 'shell' ), '<span>' . get_the_date() . '</span>' ); ?>
+			<?php elseif ( is_month() ) : ?>
+				<?php printf( __( 'Monthly Archives: %s', 'shell' ), '<span>' . get_the_date( 'F Y' ) . '</span>' ); ?>
+			<?php elseif ( is_year() ) : ?>
+				<?php printf( __( 'Yearly Archives: %s', 'shell' ), '<span>' . get_the_date( 'Y' ) . '</span>' ); ?>
+			<?php else : ?>
+				<?php _e( 'Blog Archives', 'shell' ); ?>
+			<?php endif; ?>
+		</h6>
         
-        <?php while (have_posts()) : the_post(); ?>
+        <?php while ( have_posts() ) : the_post(); ?>
         
             <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <h1><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php printf(__('Permanent Link to %s', 'shell'), the_title_attribute('echo=0')); ?>"><?php the_title(); ?></a></h1>
@@ -56,24 +62,24 @@
 			        );
 		        ?>
 				    <?php if ( comments_open() ) : ?>
-                        <span class="comments-link">
+						<span class="comments-link">
                         <span class="mdash">&mdash;</span>
-                    <?php comments_popup_link(__('No Comments &darr;', 'shell'), __('1 Comment &darr;', 'shell'), __('% Comments &darr;', 'shell')); ?>
+                    	<?php comments_popup_link( __( 'No Comments &darr;', 'shell' ), __( '1 Comment &darr;', 'shell' ), __( '% Comments &darr;', 'shell' ) ); ?>
                         </span>
                     <?php endif; ?> 
                 </div><!-- end of .post-meta -->
                 
                 <div class="post-entry">
                     <?php the_excerpt(); ?>
-                    <?php wp_link_pages(array('before' => '<div class="pagination">' . __('Pages:', 'shell'), 'after' => '</div>')); ?>
+                    <?php wp_link_pages( array( 'before' => '<div class="pagination">' . __( 'Pages:', 'shell' ), 'after' => '</div>' ) ); ?>
                 </div><!-- end of .post-entry -->
                 
                 <div class="post-data">
-				    <?php the_tags(__('Tagged with:', 'shell') . ' ', ', ', '<br />'); ?> 
-					<?php printf(__('Posted in %s', 'shell'), get_the_category_list(', ')); ?>
+				    <?php the_tags( __( 'Tagged with:', 'shell' ) . ' ', ', ', '<br />' ); ?> 
+					<?php printf( __( 'Posted in %s', 'shell' ), get_the_category_list( ', ' ) ); ?>
                 </div><!-- end of .post-data -->             
 
-            <div class="post-edit"><?php edit_post_link(__('Edit', 'shell')); ?></div>             
+            <div class="post-edit"><?php edit_post_link( __( 'Edit', 'shell' ) ); ?></div>             
             </div><!-- end of #post-<?php the_ID(); ?> -->
             
             <?php comments_template( '', true ); ?>
@@ -89,14 +95,14 @@
 
 	    <?php else : ?>
 
-        <h1 class="title-404"><?php _e('404 &#8212; Fancy meeting you here!', 'shell'); ?></h1>
-        <p><?php _e('Don\'t panic, we\'ll get through this together. Let\'s explore our options here.', 'shell'); ?></p>
+        <h1 class="title-404"><?php _e( '404 &#8212; Fancy meeting you here!', 'shell' ); ?></h1>
+        <p><?php _e( 'Don\'t panic, we\'ll get through this together. Let\'s explore our options here.', 'shell' ); ?></p>
         <h6><?php _e( 'You can return', 'shell' ); ?> <a href="<?php echo home_url(); ?>/" title="<?php esc_attr_e( 'home', 'shell' ); ?>"><?php _e( '&#9166; Home', 'shell' ); ?></a> <?php _e( 'or search for the page you were looking for', 'shell' ); ?></h6>
         <?php get_search_form(); ?>
 
-<?php endif; ?>  
+	<?php endif; ?>
       
-        </div><!-- end of #content-archive -->
+</div><!-- end of #content-archive -->
         
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

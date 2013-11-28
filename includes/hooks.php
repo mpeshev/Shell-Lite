@@ -6,7 +6,7 @@
  * @file           hooks.php
  * @package        WordPress 
  * @subpackage     Shell 
- * @author          Emil Uzelac, nofearinc 
+ * @author         Emil Uzelac, nofearinc 
  * @copyright      2003 - 2012 ThemeID, 2013 DevWP
  * @license        license.txt
  * @version        Release: 1.0
@@ -23,7 +23,7 @@
  * @see header.php
  */
 function shell_container() {
-    do_action('shell_container');
+    do_action( 'shell_container' );
 }
 
 /**
@@ -32,7 +32,7 @@ function shell_container() {
  * @see footer.php
  */
 function shell_container_end() {
-    do_action('shell_container_end');
+    do_action( 'shell_container_end' );
 }
 
 /**
@@ -41,7 +41,7 @@ function shell_container_end() {
  * @see header.php
  */
 function shell_header() {
-    do_action('shell_header');
+    do_action( 'shell_header' );
 }
 
 /**
@@ -50,7 +50,7 @@ function shell_header() {
  * @see header.php
  */
 function shell_in_header() {
-    do_action('shell_in_header');
+    do_action( 'shell_in_header' );
 }
 
 /**
@@ -59,7 +59,7 @@ function shell_in_header() {
  * @see header.php
  */
 function shell_header_end() {
-    do_action('shell_header_end');
+    do_action( 'shell_header_end' );
 }
 
 /**
@@ -68,7 +68,7 @@ function shell_header_end() {
  * @see header.php
  */
 function shell_wrapper() {
-    do_action('shell_wrapper');
+    do_action( 'shell_wrapper' );
 }
 
 /**
@@ -77,7 +77,7 @@ function shell_wrapper() {
  * @see header.php
  */
 function shell_in_wrapper() {
-    do_action('shell_in_wrapper');
+    do_action( 'shell_in_wrapper' );
 }
 
 /**
@@ -86,7 +86,7 @@ function shell_in_wrapper() {
  * @see header.php
  */
 function shell_wrapper_end() {
-    do_action('shell_wrapper_end');
+    do_action( 'shell_wrapper_end' );
 }
 
 /**
@@ -95,7 +95,7 @@ function shell_wrapper_end() {
  * @see sidebar.php
  */
 function shell_widgets() {
-    do_action('shell_widgets');
+    do_action( 'shell_widgets' );
 }
 
 /**
@@ -104,7 +104,7 @@ function shell_widgets() {
  * @see sidebar.php
  */
 function shell_widgets_end() {
-    do_action('shell_widgets_end');
+    do_action( 'shell_widgets_end' );
 }
 
 ?>

@@ -6,7 +6,7 @@
  * @file           sidebar.php
  * @package        WordPress 
  * @subpackage     Shell 
- * @author          Emil Uzelac, nofearinc 
+ * @author         Emil Uzelac, nofearinc 
  * @copyright      2003 - 2012 ThemeID, 2013 DevWP
  * @license        license.txt
  * @version        Release: 1.0
@@ -18,19 +18,7 @@
         <div id="widgets" class="grid col-300 fit">
         <?php shell_widgets(); // above widgets hook ?>
             
-            <?php if (!dynamic_sidebar('primary-sidebar-widget')) : ?>
-            
-                <div class="widget-title"><?php _e('In Archive', 'shell'); ?></div>
-					<ul>
-						<?php wp_get_archives( array( 'type' => 'monthly' ) ); ?>
-					</ul>
-
-                <div class="widget-title"><?php _e('My Account', 'shell'); ?></div>
-					<ul>
-						<?php wp_register(); ?>
-						<li><?php wp_loginout(); ?></li>
-						<?php wp_meta(); ?>
-					</ul>
+            <?php if ( ! dynamic_sidebar( 'primary-sidebar-widget' ) ) : ?>
 
             <?php endif; //end primary-widget ?>
 

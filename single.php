@@ -6,7 +6,7 @@
  * @file           single.php
  * @package        WordPress 
  * @subpackage     Shell 
- * @author          Emil Uzelac, nofearinc 
+ * @author         Emil Uzelac, nofearinc 
  * @copyright      2003 - 2012 ThemeID, 2013 DevWP
  * @license        license.txt
  * @version        Release: 1.0
@@ -17,19 +17,25 @@
 ?>
 <?php get_header(); ?>
 
-        <div id="content" class="grid col-620">
-        
-<?php if (have_posts()) : ?>
+<?php $options = get_option( 'shell_theme_options' ); ?>
 
-		<?php while (have_posts()) : the_post(); ?>
+<div id="content" class="grid col-620">
         
-        <?php if (function_exists('shell_breadcrumb_lists')) shell_breadcrumb_lists(); ?> 
+	<?php if ( have_posts() ) : ?>
+
+		<?php while ( have_posts() ) : the_post(); ?>
+        
+        	<?php
+	        if ( function_exists( 'shell_breadcrumb_lists' ) && ( isset( $options['breadcrumbs'] ) && $options['breadcrumbs'] == 'true' ) ) {
+	        	shell_breadcrumb_lists(); 
+	        }
+	        ?>
           
             <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <h1><?php the_title(); ?></h1>
 
                 <div class="post-meta">
-                <?php 
+                	<?php 
                     printf( __( '<span class="%1$s">Posted on</span> %2$s by %3$s', 'shell' ),'meta-prep meta-prep-author',
 		            sprintf( '<a href="%1$s" title="%2$s" rel="bookmark">%3$s</a>',
 			            get_permalink(),
@@ -42,37 +48,47 @@
 			            get_the_author()
 		                )
 			        );
-		        ?>
+		        	?>
 				    <?php if ( comments_open() ) : ?>
                         <span class="comments-link">
                         <span class="mdash">&mdash;</span>
-                    <?php comments_popup_link(__('No Comments &darr;', 'shell'), __('1 Comment &darr;', 'shell'), __('% Comments &darr;', 'shell')); ?>
+                    <?php comments_popup_link( __( 'No Comments &darr;', 'shell'), __( '1 Comment &darr;', 'shell' ), __( '% Comments &darr;', 'shell' ) ); ?>
                         </span>
                     <?php endif; ?> 
                 </div><!-- end of .post-meta -->
                                 
                 <div class="post-entry">
-                    <?php the_content(__('See more &#8250;', 'shell')); ?>
+                    <?php the_content( __( 'See more &#8250;', 'shell' ) ); ?>
                     
-                    <?php if ( get_the_author_meta('description') != '' ) : ?>
+                    <?php
+                    if ( isset( $options['author_bio'] ) && $options['author_bio'] == 'true' ) : 
+                    	if ( get_the_author_meta('description') != '' ) :
+                    ?>
                     
                     <div id="author-meta">
-                    <?php if (function_exists('get_avatar')) { echo get_avatar( get_the_author_meta('email'), '80' ); }?>
+                    	<?php 
+                    	if ( function_exists( 'get_avatar' ) ) {
+                    		echo get_avatar( get_the_author_meta( 'email' ), '80' );
+                    	}
+                    	?>
                         <div class="about-author">About <?php the_author_posts_link(); ?></div>
-                        <p><?php the_author_meta('description') ?></p>
+                        <p><?php the_author_meta( 'description' ) ?></p>
                     </div><!-- end of #author-meta -->
                     
-                    <?php endif; // no description, no author's meta ?>
+                    <?php 
+                    	endif; // no description, no author's meta
+                    endif; // end author meta 
+                    ?>
                     
-                    <?php wp_link_pages(array('before' => '<div class="pagination">' . __('Pages:', 'shell'), 'after' => '</div>')); ?>
+                    <?php wp_link_pages( array( 'before' => '<div class="pagination">' . __( 'Pages:', 'shell' ), 'after' => '</div>' ) ); ?>
                 </div><!-- end of .post-entry -->
                 
                 <div class="post-data">
-				    <?php the_tags(__('Tagged with:', 'shell') . ' ', ', ', '<br />'); ?> 
-					<?php printf(__('Posted in %s', 'shell'), get_the_category_list(', ')); ?> 
+				    <?php the_tags( __( 'Tagged with:', 'shell' ) . ' ', ', ', '<br />' ); ?> 
+					<?php printf( __( 'Posted in %s', 'shell' ), get_the_category_list( ', ' ) ); ?> 
                 </div><!-- end of .post-data -->             
 
-            <div class="post-edit"><?php edit_post_link(__('Edit', 'shell')); ?></div>             
+            <div class="post-edit"><?php edit_post_link( __( 'Edit', 'shell' ) ); ?></div>             
             </div><!-- end of #post-<?php the_ID(); ?> -->
             
 			<?php comments_template( '', true ); ?>
@@ -88,14 +104,14 @@
 
 	    <?php else : ?>
 
-        <h1 class="title-404"><?php _e('404 &#8212; Fancy meeting you here!', 'shell'); ?></h1>
-        <p><?php _e('Don\'t panic, we\'ll get through this together. Let\'s explore our options here.', 'shell'); ?></p>
+        <h1 class="title-404"><?php _e( '404 &#8212; Fancy meeting you here!', 'shell' ); ?></h1>
+        <p><?php _e( 'Don\'t panic, we\'ll get through this together. Let\'s explore our options here.', 'shell' ); ?></p>
         <h6><?php _e( 'You can return', 'shell' ); ?> <a href="<?php echo home_url(); ?>/" title="<?php esc_attr_e( 'home', 'shell' ); ?>"><?php _e( '&#9166; Home', 'shell' ); ?></a> <?php _e( 'or search for the page you were looking for', 'shell' ); ?></h6>
         <?php get_search_form(); ?>
 
-<?php endif; ?>  
+	<?php endif; ?>
       
-        </div><!-- end of #content -->
+</div><!-- end of #content -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

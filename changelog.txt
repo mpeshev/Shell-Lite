@@ -84,7 +84,7 @@ because we're calling hooks directly from /includes/functions.php
 - small CSS change for 100% image width
 
 (02/18/2013)
-Version was changed to 1.7.0
+Version was updated to 1.7.0
 - Featured Image - Added option to change Homepage Featured Image
 - Icons - YouTube icon was added.
 - footer.php - Footer links updated
@@ -92,8 +92,14 @@ Version was changed to 1.7.0
 - blog.php and blog-excerpt.php - now they are using WP_Query instead of query_posts and Featured image size was fixed to the thumbnail.
 - added max-width to images in sidebar to avoid overlapping the site
 
-(05/10/2013)
-Version was changed to 1.7.1
-- Minor CSS changes
-	- Fixing Search Form in Widgets
-	- Fixing Custom Menu Widget background
+(11/28/2013)
+Version was updated to 1.8.0
+- Featured Image now can be added using WordPress Media Uploader.
+- Added option to Display/Hide Author Bio bellow posts.
+- Added option to Display/Hide Breadcrumbs.
+- Added option to Display/Hide Homepage Featured Button.
+- Added option to open Homepage Featured Button in new tab/window.
+- Added New Social Icons from https://www.iconfinder.com/
+- Social Icons now open in new tab.
+- Minor CSS changes.
+- Theme Code changes.

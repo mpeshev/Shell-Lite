@@ -6,7 +6,7 @@
  * @file           page.php
  * @package        WordPress 
  * @subpackage     Shell 
- * @author          Emil Uzelac, nofearinc
+ * @author         Emil Uzelac, nofearinc
  * @copyright      2003 - 2012 ThemeID, 2013 DevWP
  * @license        license.txt
  * @version        Release: 1.0
@@ -17,13 +17,19 @@
 ?>
 <?php get_header(); ?>
 
-        <div id="content" class="grid col-620">
-        
-<?php if (have_posts()) : ?>
+<?php $options = get_option( 'shell_theme_options' ); ?>
 
-		<?php while (have_posts()) : the_post(); ?>
+<div id="content" class="grid col-620">
         
-        <?php if (function_exists('shell_breadcrumb_lists')) shell_breadcrumb_lists(); ?>
+	<?php if ( have_posts() ) : ?>
+
+		<?php while ( have_posts() ) : the_post(); ?>
+        
+        	<?php
+	        if ( function_exists( 'shell_breadcrumb_lists' ) && ( isset( $options['breadcrumbs'] ) && $options['breadcrumbs'] == 'true' ) ) {
+	        	shell_breadcrumb_lists(); 
+	        }
+	        ?>
         
             <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <h1><?php the_title(); ?></h1>
@@ -46,26 +52,26 @@
 		        ?>
 				    <?php if ( comments_open() ) : ?>
                         <span class="comments-link">
-                        <span class="mdash">&mdash;</span>
-                    <?php comments_popup_link(__('No Comments &darr;', 'shell'), __('1 Comment &darr;', 'shell'), __('% Comments &darr;', 'shell')); ?>
+                        	<span class="mdash">&mdash;</span>
+                    		<?php comments_popup_link( __( 'No Comments &darr;', 'shell' ), __( '1 Comment &darr;', 'shell' ), __( '% Comments &darr;', 'shell' ) ); ?>
                         </span>
                     <?php endif; ?> 
                 </div><!-- end of .post-meta -->
                 <?php endif; ?> 
                 
                 <div class="post-entry">
-                    <?php the_content(__('See more &#8250;', 'shell')); ?>
-                    <?php wp_link_pages(array('before' => '<div class="pagination">' . __('Pages:', 'shell'), 'after' => '</div>')); ?>
+                    <?php the_content( __( 'See more &#8250;', 'shell' ) ); ?>
+                    <?php wp_link_pages( array( 'before' => '<div class="pagination">' . __( 'Pages:', 'shell' ), 'after' => '</div>' ) ); ?>
                 </div><!-- end of .post-entry -->
                 
                 <?php if ( comments_open() ) : ?>
                 <div class="post-data">
-				    <?php the_tags(__('Tagged with:', 'shell') . ' ', ', ', '<br />'); ?> 
-                    <?php the_category(__('Posted in %s', 'shell') . ', '); ?> 
+				    <?php the_tags( __( 'Tagged with:', 'shell' ) . ' ', ', ', '<br />' ); ?> 
+                    <?php the_category( __( 'Posted in %s', 'shell' ) . ', ' ); ?> 
                 </div><!-- end of .post-data -->
                 <?php endif; ?>             
             
-            <div class="post-edit"><?php edit_post_link(__('Edit', 'shell')); ?></div> 
+            <div class="post-edit"><?php edit_post_link( __( 'Edit', 'shell' ) ); ?></div> 
             </div><!-- end of #post-<?php the_ID(); ?> -->
             
             <?php comments_template( '', true ); ?>
@@ -81,14 +87,14 @@
 
 	    <?php else : ?>
 
-        <h1 class="title-404"><?php _e('404 &#8212; Fancy meeting you here!', 'shell'); ?></h1>
-        <p><?php _e('Don\'t panic, we\'ll get through this together. Let\'s explore our options here.', 'shell'); ?></p>
+        <h1 class="title-404"><?php _e( '404 &#8212; Fancy meeting you here!', 'shell' ); ?></h1>
+        <p><?php _e( 'Don\'t panic, we\'ll get through this together. Let\'s explore our options here.', 'shell' ); ?></p>
         <h6><?php _e( 'You can return', 'shell' ); ?> <a href="<?php echo home_url(); ?>/" title="<?php esc_attr_e( 'home', 'shell' ); ?>"><?php _e( '&#9166; Home', 'shell' ); ?></a> <?php _e( 'or search for the page you were looking for', 'shell' ); ?></h6>
         <?php get_search_form(); ?>
 
-<?php endif; ?>  
+	<?php endif; ?>
       
-        </div><!-- end of #content -->
+</div><!-- end of #content -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
