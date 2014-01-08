@@ -25,3 +25,8 @@
 	background: #B1EBA9;
 	border: 1px solid #7ED173;
 }
+
+/* Fix checkbox width in Shell Options page */
+.wrap td > input[type=checkbox] {
+	width: 15px;
+}
