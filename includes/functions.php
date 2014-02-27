@@ -474,15 +474,5 @@ function shell_breadcrumb_lists () {
 		wp_enqueue_media();
 		wp_enqueue_script( 'featured-img-uploader', get_template_directory_uri() . '/js/featured-img-uploader.js', array( 'jquery' ) );
     }
-    
-    /*
-     * Hide Shell Lite Notice Message
-     */
-    add_action( 'wp_ajax_store_ajax_value', 'store_ajax_value' );
-    function store_ajax_value() {
-		update_option( 'shell_lite_dismiss_notice' , true );
-
-		die();
-	}
    
 ?>

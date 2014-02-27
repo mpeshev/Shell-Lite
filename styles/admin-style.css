@@ -4,21 +4,6 @@
 	width: 100%;	
 }
 
-/* =Shell Lite Notice Message
--------------------------------------------------------------- */
-.shell-lite-theme-notice {
-	overflow: hidden;
-	padding: 5px 10px;
-	background-color: #ffffe0;
-	border: 1px solid;
-	border-color: #e6db55;
-	border-radius: 10px;
-}
-
-#shell-lite-notice-dismiss {
-	float: right;
-}
-
 /* =Shell Lite Options Saved
 -------------------------------------------------------------- */
 .updated.fade.shell-lite-options-updated {

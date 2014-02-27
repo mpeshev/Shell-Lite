@@ -101,23 +101,6 @@ function shell_theme_options_do_page() {
         	<?php screen_icon(); echo "<h2>" . $theme_name ." ". __( 'Theme Options', 'shell' ) . "</h2>"; ?>
         </div>
 		
-		<?php 
-		$shell_dismissed = get_option( 'shell_lite_dismiss_notice', false );
-		
-		if( ! $shell_dismissed ) { // Hide Shell Lite Notice
-		?>
-			<div id="setting-error-tgmpa" class="updated settings-error shell-lite-theme-notice">
-				<a id="shell-lite-notice-dismiss" href="javascript:void();"><?php _e( 'Dismiss this message', 'shell' );?></a>
-				<h4>Thank you for downloading Shell Lite Theme.</h4>
-				<p>
-				 If you have any questions or need support, please visit our <a href="<?php echo $shell_lite_support_url; ?>" target="_blank">Support Forum</a>.
-				</p>
-				<p>
-				If you want to see some Child Themes for Shell Lite, feel free to check those <a href="<?php echo $shell_lite_child_themes_url; ?>" target="_blank">available themes</a>
-				</p>
-			</div>
-		<?php } // End of Hide Shell Lite Notice ?>
-		
 		<?php if ( false !== $_REQUEST['settings-updated'] ) : ?>
 			<div id="message" class="updated fade shell-lite-options-updated">
 				<p>
