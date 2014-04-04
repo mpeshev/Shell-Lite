@@ -1,0 +1,10 @@
+<wpml-config>
+    <admin-texts>
+        <key name="shell_theme_options">
+	    <key name="home_headline" />
+	    <key name="home_content_area" />
+	    <key name="home_subheadline" />
+	    <key name="featured_button_text" />
+	</key>
+    </admin-texts>
+</wpml-config>
