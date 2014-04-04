@@ -71,7 +71,7 @@
                     		echo get_avatar( get_the_author_meta( 'email' ), '80' );
                     	}
                     	?>
-                        <div class="about-author">About <?php the_author_posts_link(); ?></div>
+                        <div class="about-author"><?php _e( 'About', 'shell' ); the_author_posts_link(); ?></div>
                         <p><?php the_author_meta( 'description' ) ?></p>
                     </div><!-- end of #author-meta -->
                     

@@ -28,12 +28,12 @@
             // First let's check if headline was set
 			    if ( $options['home_headline'] ) {
                     echo '<h1 class="featured-title">'; 
-				    echo $options['home_headline'];
+				    _e( $options['home_headline'], 'shell' );
 				    echo '</h1>'; 
 			// If not display dummy headline for preview purposes
 			      } else { 
 			        echo '<h1 class="featured-title">';
-				    echo 'Your H1 Headline Goes Right Here. Great for SEO!';
+				    _e( 'Your H1 Headline Goes Right Here. Great for SEO!', 'shell' );
 				    echo '</h1>';
 				  }
 			?>
@@ -53,11 +53,11 @@
 			// First let's check if headline was set
 		    if ( $options['home_subheadline'] ) {
              	echo '<h2 class="featured-subtitle">'; 
-			    echo $options['home_subheadline'];
+			    _e( $options['home_subheadline'], 'shell' );
 			    echo '</h2>'; 
 			} else { // If not display dummy headline for preview purposes
 				echo '<h2 class="featured-subtitle">';
-			    echo 'Your H2 Subheadline Here';
+			    _e( 'Your H2 Subheadline Here', 'shell' );
 			    echo '</h2>';
 			  }
 			?>
@@ -66,12 +66,12 @@
 			// First let's check if content is in place
 		    if ( $options['home_content_area'] ) {
 				echo '<p class="featured-content-area">'; 
-			    echo $options['home_content_area'];
+			    _e( $options['home_content_area'], 'shell' );
 			    echo '</p>'; 
 			} else { // If not let's show dummy content for demo purposes
 				echo '<p class="featured-content-area">';
-				echo 'Properly structured landing page is big part of the Search Engine Optimization. Shell is a hassle-free WordPress CMS Theme. All of the content on this landing page
-				     is fully manageable directly from Theme Options, including call-to-action button and its destination.';
+				_e( 'Properly structured landing page is big part of the Search Engine Optimization. Shell is a hassle-free WordPress CMS Theme. All of the content on this landing page
+				     is fully manageable directly from Theme Options, including call-to-action button and its destination.', 'shell' );
 				echo '</p>';
 			}
 			?>                    
@@ -92,12 +92,12 @@
 				    	} else {
 				    		echo '<a href="'.$options['featured_button_link'].'">';
 				    	}
-						echo $options['featured_button_text'];
+						_e( $options['featured_button_text'], 'shell' );
 					    echo '</a></p>';
 					} else { // If not display dummy headline for preview purposes
 						echo '<p>';
 						echo '<a href="#nogo">'; 
-						echo 'Call to Action';
+						_e( 'Call to Action', 'shell' );
 					    echo '</a></p>';
 					  }
 				?>  

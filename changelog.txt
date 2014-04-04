@@ -103,3 +103,7 @@ Version was updated to 1.8.0
 - Social Icons now open in new tab.
 - Minor CSS changes.
 - Theme Code changes.
+
+(04/04/2014)
+Version was updated to 1.8.1
+- Added i18n functions in front-page.php and another theme files.

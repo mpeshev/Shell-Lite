@@ -22,22 +22,22 @@
                     
 					<?php $shell_data = get_post_meta($post->ID, '_wp_attachment_metadata', true); ?>
                     
-                    <span class="full-size">Full Size: <a href="<?php echo wp_get_attachment_url($post->ID); ?>"><?php echo $shell_data['width'] . '&#215;' . $shell_data['height']; ?></a>px</span>
+                    <span class="full-size"><?php _e( 'Full Size:', 'shell' ); ?> <a href="<?php echo wp_get_attachment_url($post->ID); ?>"><?php echo $shell_data['width'] . '&#215;' . $shell_data['height']; ?></a>px</span>
                     
 					<?php if ($shell_data['image_meta']['aperture']) { ?>
-                    <span class="aperture">Aperture: f/<?php echo $shell_data['image_meta']['aperture']; ?></span>
+                    <span class="aperture"><?php _e( 'Aperture: f/', 'shell' ); ?><?php echo $shell_data['image_meta']['aperture']; ?></span>
                     <?php } ?>
 
                     <?php if ($shell_data['image_meta']['focal_length']) { ?>
-                    <span class="focal-length">Focal Length: <?php echo $shell_data['image_meta']['focal_length']; ?>mm</span>
+                    <span class="focal-length"><?php _e( 'Focal Length:', 'shell' ); echo $shell_data['image_meta']['focal_length']; ?>mm</span>
                     <?php } ?>
 
                     <?php if ($shell_data['image_meta']['iso']) { ?>
-                    <span class="iso">ISO: <?php echo $shell_data['image_meta']['iso']; ?></span>
+                    <span class="iso"><?php _e( 'ISO:', 'shell' ); echo $shell_data['image_meta']['iso']; ?></span>
                     <?php } ?>
 
                     <?php if ($shell_data['image_meta']['shutter_speed']) { ?>
-                    <span class="shutter">Shutter:
+                    <span class="shutter"><?php _e( 'Shutter:', 'shell' ); ?>
 					<?php
                         if ((1 / $shell_data['image_meta']['shutter_speed']) > 1) {
                             echo "1/";
@@ -54,7 +54,7 @@
                     <?php } ?>
 
                     <?php if ($shell_data['image_meta']['camera']) { ?>
-                    <span class="camera">Camera: <?php echo $shell_data['image_meta']['camera']; ?></span>
+                    <span class="camera"><?php _e( 'Camera:', 'shell' ); echo $shell_data['image_meta']['camera']; ?></span>
                     <?php } ?>
 
         </div><!-- end of #widgets -->

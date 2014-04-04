@@ -22,7 +22,8 @@
             <?php if (!dynamic_sidebar('primary-home-sidebar-widget')) : ?>
             
                 <div class="widget-title-home"><h3><?php _e('Primary Home Widget', 'shell'); ?></h3></div>
-                <p>Testimonials are a powerful selling tool. Many great selling ads are made up of 1/3 testimonials of the company's products or services. This is only a suggestion, since this area is widgetized you can use it any way you please to satisfy your needs.
+                <p>
+                	<?php _e( "Testimonials are a powerful selling tool. Many great selling ads are made up of 1/3 testimonials of the company's products or services. This is only a suggestion, since this area is widgetized you can use it any way you please to satisfy your needs.", 'shell' ); ?>
                 </p>
             
 			<?php endif; //end of primary-home-sidebar-widget ?>
@@ -36,8 +37,9 @@
 			<?php if (!dynamic_sidebar('secondary-home-sidebar-widget')) : ?>
             
                 <div class="widget-title-home"><h3><?php _e('Secondary Home Widget', 'shell'); ?></h3></div>
-                <p>Since 1975, <?php bloginfo('name'); ?> has been committed to ethically producing the highest quality service in the world. Today with more than 5000 employees worldwide <?php bloginfo('name'); ?> is still committed to same producing quality. 
-                </p>
+                <p>
+                	<?php _e( "Since 1975, Shell-Lite has been committed to ethically producing the highest quality service in the world. Today with more than 5000 employees worldwide Shell-Lite is still committed to same producing quality.", 'shell' ); ?>
+				</p>
             
 			<?php endif; //end of secondary-home-sidebar-widget ?>
             
@@ -50,7 +52,8 @@
             <?php if (!dynamic_sidebar('tertiary-home-sidebar-widget')) : ?>
             
                 <div class="widget-title-home"><h3><?php _e('Tertiary Home Widget', 'shell'); ?></h3></div>
-                <p>Headline, Subheadline, brief info above the call-to-action button and including the button, together with its destination link can be changed via Theme Options. Logo is uploadable as well. Three columns you see here are widgets.
+                <p>
+                	<?php _e( "Headline, Subheadline, brief info above the call-to-action button and including the button, together with its destination link can be changed via Theme Options. Logo is uploadable as well. Three columns you see here are widgets.", 'shell' ); ?>
                 </p>
         
 		    <?php endif; //end of tetriary-home-sidebar-widget ?>
