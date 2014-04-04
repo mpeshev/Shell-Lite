@@ -107,3 +107,6 @@ Version was updated to 1.8.0
 (04/04/2014)
 Version was updated to 1.8.1
 - Added i18n functions in front-page.php and another theme files.
+- Added wpml-config.xml file
+- Added WPML Language Switcher in the Header.
+- Support for WPML is improved.
