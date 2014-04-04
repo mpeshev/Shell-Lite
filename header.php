@@ -72,6 +72,17 @@ wp_head();
         <div id="search-box">
             <?php get_search_form(); ?>
         </div><!-- end of #search-box -->
+        
+        <?php
+        /**
+         * WPML Language Switcher
+         */
+		if ( has_action( 'icl_language_selector' ) ) {
+			echo '<div id="wpml-language-selector">';
+				do_action( 'icl_language_selector' );
+			echo '</div><!-- end of #wpml-language-selector -->';
+		} 
+        ?>
                 
         <?php
             $options = get_option( 'shell_theme_options' );

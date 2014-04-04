@@ -576,7 +576,11 @@ form div {
 
 #header #search-box {
 	float:right;
-	margin-top:40px;
+	margin-top:39px;
+}
+
+#header #search-box input[type="text"], select {
+	height: 21px;
 }
 
 #header .social-icons {
@@ -602,6 +606,13 @@ form div {
 /* =Search Form
 -------------------------------------------------------------- */
 #searchsubmit {
+}
+
+/* =WPML Language Switcher
+-------------------------------------------------------------- */
+#header #wpml-language-selector {
+	float: right;
+	margin: 39px 5px 0 -20px;
 }
 
 /* =Content
