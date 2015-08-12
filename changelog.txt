@@ -92,21 +92,17 @@ Version was updated to 1.7.0
 - blog.php and blog-excerpt.php - now they are using WP_Query instead of query_posts and Featured image size was fixed to the thumbnail.
 - added max-width to images in sidebar to avoid overlapping the site
 
-(11/28/2013)
+(07/21/2015)
 Version was updated to 1.8.0
-- Featured Image now can be added using WordPress Media Uploader.
-- Added option to Display/Hide Author Bio bellow posts.
-- Added option to Display/Hide Breadcrumbs.
-- Added option to Display/Hide Homepage Featured Button.
+- Theme Options are replaced with Customizer
+- Added option to display post featured image in single post.
+- Added option to show/hide Author Bio bellow single post.
+- Added option to show/hide Breadcrumbs.
+- Added option to show/hide Homepage Featured Button.
 - Added option to open Homepage Featured Button in new tab/window.
 - Added New Social Icons from https://www.iconfinder.com/
 - Social Icons now open in new tab.
-- Minor CSS changes.
-- Theme Code changes.
-
-(04/04/2014)
-Version was updated to 1.8.1
-- Added i18n functions in front-page.php and another theme files.
+- Added i18n functions in front-page.php and other theme files.
 - Added wpml-config.xml file
 - Added WPML Language Switcher in the Header.
-- Support for WPML is improved.
+- Minor CSS updates.

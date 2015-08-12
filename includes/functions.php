@@ -474,5 +474,5 @@ function shell_breadcrumb_lists () {
 		wp_enqueue_media();
 		wp_enqueue_script( 'featured-img-uploader', get_template_directory_uri() . '/js/featured-img-uploader.js', array( 'jquery' ) );
     }
-   
+    
 ?>

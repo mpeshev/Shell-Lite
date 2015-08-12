@@ -91,43 +91,43 @@ wp_head();
 		
                 echo '<ul class="social-icons">';
 					
-	                if ( $options['twitter_uid'] ) {
+	                if ( ! empty( $options['twitter_uid'] ) ) {
 	                	echo '<li class="twitter-icon"><a href="' . $options['twitter_uid'] . '" target="_blank">'
 	                    .'<img src="' . get_stylesheet_directory_uri() . '/icons/twitter-icon-small.png" alt="Twitter">'
 	                    .'</a></li>';
 	                }
 	
-	                if ( $options['facebook_uid'] ) {
+	                if ( ! empty( $options['facebook_uid'] ) ) {
 	                	echo '<li class="facebook-icon"><a href="' . $options['facebook_uid'] . '" target="_blank">'
 	                    .'<img src="' . get_stylesheet_directory_uri() . '/icons/facebook-icon-small.png" alt="Facebook">'
 	                    .'</a></li>';
 	                }
 	                
-	                if ( $options['wordpress_uid'] ) {
+	                if ( ! empty( $options['wordpress_uid'] ) ) {
 	                	echo '<li class="wordpress-icon"><a href="' . $options['wordpress_uid'] . '" target="_blank">'
 	                    .'<img src="' . get_stylesheet_directory_uri() . '/icons/wordpress-icon-small.png" alt="WordPress">'
 	                    .'</a></li>';
 	                }
 	                
-	                if ( $options['github_uid'] ) {
+	                if ( ! empty( $options['github_uid'] ) ) {
 	                	echo '<li class="github-icon"><a href="' . $options['github_uid'] . '" target="_blank">'
 	                    .'<img src="' . get_stylesheet_directory_uri() . '/icons/github-icon-small.png" alt="GitHub">'
 	                    .'</a></li>';
 	                }
 	  
-	                if ( $options['linkedin_uid'] ) {
+	                if ( ! empty( $options['linkedin_uid'] ) ) {
 	                	echo '<li class="linkedin-icon"><a href="' . $options['linkedin_uid'] . '" target="_blank">'
 	                    .'<img src="' . get_stylesheet_directory_uri() . '/icons/linkedin-icon-small.png" alt="LinkedIn">'
 	                    .'</a></li>';
 	                }
 	                    
-					if ( $options['youtube_uid']) {
+					if ( ! empty( $options['youtube_uid'] ) ) {
 						echo '<li class="youtube-icon"><a href="' . $options['youtube_uid'] . '" target="_blank">'
 	                    .'<img src="' . get_stylesheet_directory_uri() . '/icons/youtube-icon-small.png" alt="YouTube">'
 	                    .'</a></li>';
 					}
 	       
-	                if ( $options['rss_feed']) {
+	                if ( ! empty( $options['rss_feed'] ) ) {
 	                	echo '<li class="rss-icon"><a href="' . $options['rss_feed'] . '" target="_blank">'
 	                    .'<img src="' . get_stylesheet_directory_uri() . '/icons/rss-icon-small.png" alt="RSS">'
 	                    .'</a></li>';

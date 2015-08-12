@@ -26,7 +26,7 @@
             $options = get_option( 'shell_theme_options' );
 			
             // First let's check if headline was set
-			    if ( $options['home_headline'] ) {
+			    if ( ! empty( $options['home_headline'] ) ) {
                     echo '<h1 class="featured-title">'; 
 				    _e( $options['home_headline'], 'shell' );
 				    echo '</h1>'; 
@@ -38,11 +38,10 @@
 				  }
 			?>
         <div class="grid col-460">
-        	
-        	<?php if ( ! isset( $options['featured_image'] ) || $options['featured_image'] == '' ) { ?>
+        	<?php if ( empty( $options['featured_image_link'] ) || $options['featured_image_link'] == null ) { ?>
     				<img class="featured-image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/featured-image.jpg" width="440" height="300" alt="" />   
         	<?php } else { ?>
-        			<img class="featured-image" src="<?php echo $options['featured_image']; ?>" width="440" height="300" alt="" />
+        			<img class="featured-image" src="<?php echo $options['featured_image_link']; ?>" width="440" height="300" alt="" />
         	<?php } ?>
             
         </div><!-- end of .col-460 -->
@@ -51,7 +50,7 @@
         
             <?php
 			// First let's check if headline was set
-		    if ( $options['home_subheadline'] ) {
+		    if ( ! empty( $options['home_subheadline'] ) ) {
              	echo '<h2 class="featured-subtitle">'; 
 			    _e( $options['home_subheadline'], 'shell' );
 			    echo '</h2>'; 
@@ -64,7 +63,7 @@
             
             <?php
 			// First let's check if content is in place
-		    if ( $options['home_content_area'] ) {
+		    if ( ! empty( $options['home_content_area'] ) ) {
 				echo '<p class="featured-content-area">'; 
 			    _e( $options['home_content_area'], 'shell' );
 			    echo '</p>'; 
@@ -78,33 +77,24 @@
             
             <?php
             // Hide Featured Button if checkbox is checked
-            if ( ( $options['featured_button_hide'] == false ) ) {
-            ?>
-            
-	            <div class="featured-button">
-	
-		            <?php
-					// First let's check if headline was set
-				    if ( $options['featured_button_link'] && $options['featured_button_text'] ) {
-	                	echo '<p>';
-	                    if ( isset( $options['featured_button_link_target'] ) && $options['featured_button_link_target'] ) {
-				    		echo '<a href="'.$options['featured_button_link'].'" target="_blank">';
-				    	} else {
-				    		echo '<a href="'.$options['featured_button_link'].'">';
-				    	}
-						_e( $options['featured_button_text'], 'shell' );
-					    echo '</a></p>';
-					} else { // If not display dummy headline for preview purposes
-						echo '<p>';
-						echo '<a href="#nogo">'; 
-						_e( 'Call to Action', 'shell' );
-					    echo '</a></p>';
-					  }
-				?>  
-	            
-	            </div><!-- end of .featured-button -->
-			<?php } ?>
-            
+            if ( empty( $options['featured_button_hide'] ) || ( $options['featured_button_hide'] == false ) ) {
+                $button_url = '#nogo';
+                $button_text = __( 'Call to Action', 'shell' );
+                $button_target = '';
+                if ( ! empty( $options['featured_button_link'] ) ) {
+                    $button_url = $options['featured_button_link'];
+                }
+                if ( ! empty( $options['featured_button_text'] ) ) {
+                    $button_text = $options['featured_button_text'];
+                }
+                if ( ! empty( $options['featured_button_link_target'] ) && $options['featured_button_link_target'] == 1 ) {
+                    $button_target = 'target="_blank"';
+                }
+                echo '<div class="featured-button"><p>';
+				echo '<a href="'. $button_url .'" '. $button_target .'>'. $button_text .'</a>';
+	            echo '</p></div><!-- end of .featured-button -->';
+			}
+			?>
         </div><!-- end of .col-460 fit --> 
         
         </div><!-- end of #content-full -->

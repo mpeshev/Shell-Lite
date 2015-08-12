@@ -26,12 +26,18 @@
 		<?php while ( have_posts() ) : the_post(); ?>
         
         	<?php
-	        if ( function_exists( 'shell_breadcrumb_lists' ) && ( isset( $options['breadcrumbs'] ) && $options['breadcrumbs'] == 'true' ) ) {
+	        if ( function_exists( 'shell_breadcrumb_lists' ) && empty( $options['breadcrumbs'] ) ) {
 	        	shell_breadcrumb_lists(); 
 	        }
 	        ?>
           
             <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+				<?php 
+				$show_post_featured_image = !empty( $options['show_post_featured_image'] ) ? $options['show_post_featured_image'] : "";
+				if( has_post_thumbnail() && $show_post_featured_image == 1 ) {
+					echo the_post_thumbnail('full'); 
+				}
+				?>
                 <h1><?php the_title(); ?></h1>
 
                 <div class="post-meta">
@@ -61,23 +67,21 @@
                     <?php the_content( __( 'See more &#8250;', 'shell' ) ); ?>
                     
                     <?php
-                    if ( isset( $options['author_bio'] ) && $options['author_bio'] == 'true' ) : 
-                    	if ( get_the_author_meta('description') != '' ) :
-                    ?>
-                    
-                    <div id="author-meta">
-                    	<?php 
-                    	if ( function_exists( 'get_avatar' ) ) {
-                    		echo get_avatar( get_the_author_meta( 'email' ), '80' );
-                    	}
+                    if ( empty( $options['author_bio'] ) )  {
+                    	if ( get_the_author_meta('description') != '' ) {
                     	?>
-                        <div class="about-author"><?php _e( 'About', 'shell' ); the_author_posts_link(); ?></div>
-                        <p><?php the_author_meta( 'description' ) ?></p>
-                    </div><!-- end of #author-meta -->
-                    
+	                    <div id="author-meta">
+	                    	<?php 
+	                    	if ( function_exists( 'get_avatar' ) ) {
+	                    		echo get_avatar( get_the_author_meta( 'email' ), '80' );
+	                    	}
+	                    	?>
+	                        <div class="about-author"><?php _e( 'About ', 'shell' ); the_author_posts_link(); ?></div>
+	                        <p><?php the_author_meta( 'description' ) ?></p>
+	                    </div><!-- end of #author-meta -->
                     <?php 
-                    	endif; // no description, no author's meta
-                    endif; // end author meta 
+                    	} // no description, no author's meta
+                    } // end author meta 
                     ?>
                     
                     <?php wp_link_pages( array( 'before' => '<div class="pagination">' . __( 'Pages:', 'shell' ), 'after' => '</div>' ) ); ?>
