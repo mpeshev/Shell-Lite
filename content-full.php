@@ -27,7 +27,7 @@
 		<?php while (have_posts()) : the_post(); ?>
         
         	<?php 
-	        if ( function_exists( 'shell_breadcrumb_lists' ) && ( isset( $options['breadcrumbs'] ) && $options['breadcrumbs'] == 'true' ) ) {
+	        if ( function_exists( 'shell_breadcrumb_lists' ) && empty( $options['breadcrumbs'] ) ) {
 	        	shell_breadcrumb_lists(); 
 	        }
 	        ?>
