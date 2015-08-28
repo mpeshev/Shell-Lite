@@ -6,7 +6,7 @@ Description: Shell is a fully featured translation ready premium-like WordPress 
 Version: 1.8.0
 Author: nofearinc 
 Author URI: http://devwp.eu
-Tags: white, black, gray, custom-menu, custom-header, custom-background, two-columns, fixed-width, theme-options, threaded-comments, translation-ready 
+Tags: white, black, gray, custom-menu, custom-header, custom-background, two-columns, fixed-layout, theme-options, threaded-comments, translation-ready
 
 Copyright (C) 2003-2012 ThemeID, 2013 DevWP
 License: GNU General Public License, version 3 (GPLv3)
@@ -1593,5 +1593,25 @@ ul, ol, dl {
 	page-break-before:avoid;
 }
 }
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+
+.screen-reader-text:focus {
+	clip: auto !important;
+	display: block;
+	height: auto;
+	left: 5px;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar. */
+}
+
 
 /*"The last 29 days of the month are the hardest."- Nikola Tesla*/

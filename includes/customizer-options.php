@@ -15,15 +15,6 @@
  * @since          available since Release 1.9.0
  */
 
-add_action( 'admin_init', 'shell_theme_options_init' );
-/**
- * Init plugin options to white list our options
- */
-function shell_theme_options_init() {
-    register_setting( 'shell_options', 'shell_theme_options', 'shell_theme_options_validate' );
-}
-
-
 /**
  * Site Verification and Webmaster Tools
  * If user sets the code we're going to display meta verification
@@ -58,48 +49,6 @@ function shell_yahoo_verification() {
 add_action('wp_head', 'shell_yahoo_verification');
 
 /**
- * Sanitize and validate input. Accepts an array, return a sanitized array.
- */
-function shell_theme_options_validate( $input ) {
-
-    $input['home_headline'] = wp_kses_stripslashes( $input['home_headline'] );
-    $input['home_content_area'] = wp_kses_stripslashes( $input['home_content_area'] );
-    $input['home_subheadline'] = wp_kses_stripslashes( $input['home_subheadline'] );
-    $input['featured_button_text'] = wp_kses_stripslashes( $input['featured_button_text'] );
-    $input['featured_button_link'] = esc_url_raw( $input['featured_button_link'] );
-    $input['featured_image'] = esc_url_raw( $input['featured_image'] );
-    if ( isset( $input['featured_button_link_target'] ) ) {
-    	$input['featured_button_link_target'] = wp_filter_post_kses( $input['featured_button_link_target'] );
-    }
-    if ( isset( $input['featured_button_hide'] ) ) {
-    	$input['featured_button_hide'] = wp_filter_post_kses( $input['featured_button_hide'] );
-    } else {
-    	$input['featured_button_hide'] = false;
-    }
-    $input['google_site_verification'] = wp_filter_post_kses( $input['google_site_verification'] );
-    $input['bing_site_verification'] = wp_filter_post_kses( $input['bing_site_verification'] );
-    $input['yahoo_site_verification'] = wp_filter_post_kses( $input['yahoo_site_verification'] );
-    $input['twitter_uid'] = esc_url_raw( $input['twitter_uid'] );
-    $input['facebook_uid'] = esc_url_raw( $input['facebook_uid'] );
-    $input['wordpress_uid'] = esc_url_raw( $input['wordpress_uid'] );
-    $input['github_uid'] = esc_url_raw( $input['github_uid'] );
-    $input['linkedin_uid'] = esc_url_raw( $input['linkedin_uid'] );
-    $input['youtube_uid'] = esc_url_raw( $input['youtube_uid'] );
-    $input['rss_feed'] = esc_url_raw( $input['rss_feed'] );
-    if ( isset( $input['breadcrumbs'] ) ) {
-	$input['breadcrumbs'] = wp_filter_post_kses( $input['breadcrumbs'] );	
-    }
-    if ( isset( $input['author_bio'] ) ) {
-	$input['author_bio'] = wp_filter_post_kses( $input['author_bio'] );
-    }
-    if ( isset( $input['show_post_featured_image'] ) ) {
-	$input['show_post_featured_image'] = wp_filter_post_kses( $input['show_post_featured_image'] );
-    }
-	
-    return $input;
-}
-
-/**
  * Add Shell Lite Theme Options in Customizer.
  */
 function shell_customizer_options( $wp_customize ) {
@@ -116,6 +65,7 @@ function shell_customizer_options( $wp_customize ) {
     $wp_customize->add_setting(
 	    'shell_theme_options[home_headline]',
 	    array(
+			'sanitize_callback' => 'wp_kses_stripslashes',
             'type' => 'option'
         )
     );
@@ -132,6 +82,7 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_setting(
 	    'shell_theme_options[home_content_area]',
 	    array(
+			'sanitize_callback' => 'wp_kses_stripslashes',
             'type' => 'option'
         )
 	);
@@ -148,6 +99,7 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_setting(
 	    'shell_theme_options[home_subheadline]',
 	    array(
+			'sanitize_callback' => 'wp_kses_stripslashes',
             'type' => 'option'
         )
 	);
@@ -164,6 +116,7 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_setting(
 	    'shell_theme_options[featured_image_link]',
 	    array(
+			'sanitize_callback' => 'esc_url_raw',
             'type' => 'option'
         )
 	);
@@ -182,6 +135,7 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_setting(
 	    'shell_theme_options[featured_button_link]',
 	    array(
+			'sanitize_callback' => 'esc_url_raw',
             'type' => 'option'
         )
 	);
@@ -198,6 +152,7 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_setting(
 	    'shell_theme_options[featured_button_text]',
 	    array(
+			'sanitize_callback' => 'wp_kses_stripslashes',
             'type' => 'option'
         )
 	);
@@ -214,6 +169,7 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_setting(
 	    'shell_theme_options[featured_button_link_target]',
 	    array(
+			'sanitize_callback' => 'esc_url_raw',
             'type' => 'option'
         )
 	);
@@ -230,6 +186,7 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_setting(
 	    'shell_theme_options[featured_button_hide]',
 	    array(
+			'sanitize_callback' => 'wp_filter_post_kses',
             'type' => 'option'
         )
 	);
@@ -246,6 +203,7 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_setting(
 	    'shell_theme_options[google_site_verification]',
 	    array(
+			'sanitize_callback' => 'wp_filter_post_kses',
             'type' => 'option'
         )
 	);
@@ -262,6 +220,7 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_setting(
 	    'shell_theme_options[bing_site_verification]',
 	    array(
+			'sanitize_callback' => 'wp_filter_post_kses',
             'type' => 'option'
         )
 	);
@@ -278,6 +237,7 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_setting(
 	    'shell_theme_options[yahoo_site_verification]',
 	    array(
+			'sanitize_callback' => 'wp_filter_post_kses',
             'type' => 'option'
         )
 	);
@@ -294,6 +254,7 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_setting(
 	    'shell_theme_options[twitter_uid]',
 	    array(
+			'sanitize_callback' => 'esc_url_raw',
             'type' => 'option'
         )
 	);
@@ -310,6 +271,7 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_setting(
 	    'shell_theme_options[facebook_uid]',
 	    array(
+			'sanitize_callback' => 'esc_url_raw',
             'type' => 'option'
         )
 	);
@@ -326,6 +288,7 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_setting(
 	    'shell_theme_options[wordpress_uid]',
 	    array(
+			'sanitize_callback' => 'esc_url_raw',
             'type' => 'option'
         )
 	);
@@ -342,6 +305,7 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_setting(
 	    'shell_theme_options[github_uid]',
 	    array(
+			'sanitize_callback' => 'esc_url_raw',
             'type' => 'option'
         )
 	);
@@ -358,6 +322,7 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_setting(
 	    'shell_theme_options[linkedin_uid]',
 	    array(
+			'sanitize_callback' => 'esc_url_raw',
             'type' => 'option'
         )
 	);
@@ -374,6 +339,7 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_setting(
 	    'shell_theme_options[youtube_uid]',
 	    array(
+			'sanitize_callback' => 'esc_url_raw',
             'type' => 'option'
         )
 	);
@@ -390,6 +356,7 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_setting(
 	    'shell_theme_options[rss_feed]',
 	    array(
+			'sanitize_callback' => 'esc_url_raw',
             'type' => 'option'
         )
 	);
@@ -406,6 +373,7 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_setting(
 	    'shell_theme_options[breadcrumbs]',
 	    array(
+			'sanitize_callback' => 'wp_filter_post_kses',
             'type' => 'option'
         )
 	);
@@ -422,6 +390,7 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_setting(
 	    'shell_theme_options[author_bio]',
 	    array(
+			'sanitize_callback' => 'wp_filter_post_kses',
             'type' => 'option'
         )
 	);
@@ -438,6 +407,7 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_setting(
 	    'shell_theme_options[show_post_featured_image]',
 	    array(
+			'sanitize_callback' => 'wp_filter_post_kses',
             'type' => 'option'
         )
 	);

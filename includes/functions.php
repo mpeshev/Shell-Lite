@@ -16,6 +16,7 @@
  */
 ?>
 <?php
+
 /**
  * Fire up the engines boys and girls let's start theme setup.
  */
@@ -30,19 +31,27 @@ if ( ! function_exists( 'shell_setup' ) ):
         /**
          * Global content width.
          */
-        if ( ! isset( $content_width ) )
+        if ( ! isset( $content_width ) ) {
             $content_width = 550;
-
+		}
+		
+		/**
+		 * This feature allows themes to add document title tag to HTML <head>.
+		 * @see https://codex.wordpress.org/Title_Tag
+		 */
+		add_theme_support( 'title-tag' );
+		
         /**
          * Shell is now available for translations.
          * Add your files into /languages/ directory.
          */
-	    load_theme_textdomain( 'shell', TEMPLATEPATH . '/languages' );
+	    load_theme_textdomain( 'shell', get_template_directory() . '/languages' );
 
 	    $locale = get_locale();
-	    $locale_file = TEMPLATEPATH . "/languages/$locale.php";
-	    if ( is_readable( $locale_file ) )
+	    $locale_file = get_template_directory() . "/languages/$locale.php";
+	    if ( is_readable( $locale_file ) ) {
 		    require_once( $locale_file );
+		}
 		
         /**
          * Add callback for custom TinyMCE editor stylesheets. (editor-style.css)
@@ -72,17 +81,6 @@ if ( ! function_exists( 'shell_setup' ) ):
 		if ( function_exists( 'get_custom_header' ) ) {
 			
         	add_theme_support('custom-background');
-		
-		} else {
-		
-			// Backward Compatibility
-			
-			/**
-	         * This feature allows users to use custom background for a theme.
-	         * @see http://codex.wordpress.org/Function_Reference/add_custom_background
-	         */
-			
-	        add_custom_background();
 		
 		}
 
@@ -117,40 +115,7 @@ if ( ! function_exists( 'shell_setup' ) ):
 		<?php
         }
 	   
-	    } else {
-		   
-        // Backward Compatibility
-		
-		/**
-         * This feature adds a callbacks for image header display.
-		 * In our case we are using this to display logo.
-         * @see http://codex.wordpress.org/Function_Reference/add_custom_image_header
-         */
-        define( 'HEADER_TEXTCOLOR', '' );
-        define( 'HEADER_IMAGE', '%s/images/default-logo.png' ); // %s is the template dir uri
-        define( 'HEADER_IMAGE_WIDTH', 300 ); // use width and height appropriate for your theme
-        define( 'HEADER_IMAGE_HEIGHT', 100 );
-        define( 'NO_HEADER_TEXT', true );
-		
-		
-		// gets included in the admin header
-        function shell_admin_header_style() {
-        ?>
-        	<style type="text/css">
-                #headimg {
-	                background-repeat: no-repeat;
-                    border: none !important;
-                    width: <?php echo HEADER_IMAGE_WIDTH; ?>px;
-                    height: <?php echo HEADER_IMAGE_HEIGHT; ?>px;
-                }
-             </style>
-		<?php
-         }
-         
-		 add_custom_image_header( '', 'shell_admin_header_style' );
-		
 	    }
-	    
     }
 
 endif;

@@ -28,7 +28,7 @@
             // First let's check if headline was set
 			    if ( ! empty( $options['home_headline'] ) ) {
                     echo '<h1 class="featured-title">'; 
-				    _e( $options['home_headline'], 'shell' );
+				    echo $options['home_headline'];
 				    echo '</h1>'; 
 			// If not display dummy headline for preview purposes
 			      } else { 
@@ -52,7 +52,7 @@
 			// First let's check if headline was set
 		    if ( ! empty( $options['home_subheadline'] ) ) {
              	echo '<h2 class="featured-subtitle">'; 
-			    _e( $options['home_subheadline'], 'shell' );
+			     echo $options['home_subheadline'];
 			    echo '</h2>'; 
 			} else { // If not display dummy headline for preview purposes
 				echo '<h2 class="featured-subtitle">';
@@ -65,7 +65,7 @@
 			// First let's check if content is in place
 		    if ( ! empty( $options['home_content_area'] ) ) {
 				echo '<p class="featured-content-area">'; 
-			    _e( $options['home_content_area'], 'shell' );
+			    echo $options['home_content_area'];
 			    echo '</p>'; 
 			} else { // If not let's show dummy content for demo purposes
 				echo '<p class="featured-content-area">';
