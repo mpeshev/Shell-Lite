@@ -80,28 +80,19 @@ function shell_customizer_options( $wp_customize ) {
 	);
 	
 	$wp_customize->add_setting(
-	    'shell_theme_options[home_content_area]',
-	    array(
-			'sanitize_callback' => 'wp_kses_stripslashes',
-            'type' => 'option'
-        )
-	);
-	
-	$wp_customize->add_control(
-	    'shell_theme_options[home_content_area]',
-	    array(
-	        'label' => __( 'Content Area', 'shell' ),
-	        'section' => 'shell_lite_options',
-	        'type' => 'textarea',
-	    )
+			'shell_theme_options[home_subheadline]',
+			array(
+					'sanitize_callback' => 'wp_kses_stripslashes',
+					'type' => 'option'
+			)
 	);
 	
 	$wp_customize->add_setting(
-	    'shell_theme_options[home_subheadline]',
-	    array(
-			'sanitize_callback' => 'wp_kses_stripslashes',
-            'type' => 'option'
-        )
+			'shell_theme_options[home_content_area]',
+			array(
+					'sanitize_callback' => 'wp_kses_stripslashes',
+					'type' => 'option'
+			)
 	);
 	
 	$wp_customize->add_control(
@@ -111,6 +102,15 @@ function shell_customizer_options( $wp_customize ) {
 	        'section' => 'shell_lite_options',
 	        'type' => 'text',
 	    )
+	);
+	
+	$wp_customize->add_control(
+			'shell_theme_options[home_content_area]',
+			array(
+					'label' => __( 'Content Area', 'shell' ),
+					'section' => 'shell_lite_options',
+					'type' => 'textarea',
+			)
 	);
 	
 	$wp_customize->add_setting(
