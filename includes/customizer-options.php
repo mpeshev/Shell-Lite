@@ -23,8 +23,8 @@
  
 function shell_google_verification() {
     $options = get_option('shell_theme_options');
-    if ($options['google_site_verification']) {
-	echo '<meta name="google-site-verification" content="' . $options['google_site_verification'] . '" />' . "\n";
+    if ( !empty( $options['google_site_verification'] ) ) {
+		echo '<meta name="google-site-verification" content="' . $options['google_site_verification'] . '" />' . "\n";
     }
 }
 
@@ -32,7 +32,7 @@ add_action('wp_head', 'shell_google_verification');
 
 function shell_bing_verification() {
     $options = get_option('shell_theme_options');
-    if ($options['bing_site_verification']) {
+    if ( ! empty( $options['bing_site_verification'] ) ) {
         echo '<meta name="msvalidate.01" content="' . $options['bing_site_verification'] . '" />' . "\n";
     }
 }
@@ -41,7 +41,7 @@ add_action('wp_head', 'shell_bing_verification');
 
 function shell_yahoo_verification() {
     $options = get_option('shell_theme_options');
-    if ($options['yahoo_site_verification']) {
+    if ( ! empty( $options['yahoo_site_verification'] ) ) {
         echo '<meta name="y_key" content="' . $options['yahoo_site_verification'] . '" />' . "\n";
     }
 }
@@ -56,9 +56,9 @@ function shell_customizer_options( $wp_customize ) {
     $wp_customize->add_section(
         'shell_lite_options',
         array(
-            'title' => __( 'Shell Lite Options', 'shell' ),
-            'description' => __( 'Shell Lite Theme Options', 'shell' ),
-            'priority' => 500,
+			'title' => __( 'Shell Lite Options', 'shell' ),
+			'description' => __( 'Shell Lite Theme Options', 'shell' ),
+			'priority' => 500,
         )
     );
     
@@ -207,10 +207,10 @@ function shell_customizer_options( $wp_customize ) {
             'type' => 'option'
         )
 	);
-	
 	$wp_customize->add_control(
 	    'shell_theme_options[google_site_verification]',
 	    array(
+			'description' => __( '<strong>This feature is going to be removed in the upcoming version.</strong>', 'shell' ),
 	        'label' => __( 'Google Site Verification', 'shell' ),
 	        'section' => 'shell_lite_options',
 	        'type' => 'text',
@@ -228,9 +228,10 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_control(
 	    'shell_theme_options[bing_site_verification]',
 	    array(
-	        'label' => __( 'Bing Site Verification', 'shell' ),
-	        'section' => 'shell_lite_options',
-	        'type' => 'text',
+			'description' => __( '<strong>This feature is going to be removed in the upcoming version.</strong>', 'shell' ),
+			'label' => __( 'Bing Site Verification', 'shell' ),
+			'section' => 'shell_lite_options',
+			'type' => 'text',
 	    )
 	);
 	
@@ -245,9 +246,10 @@ function shell_customizer_options( $wp_customize ) {
 	$wp_customize->add_control(
 	    'shell_theme_options[yahoo_site_verification]',
 	    array(
-	        'label' => __( 'Yahoo Site Verification', 'shell' ),
-	        'section' => 'shell_lite_options',
-	        'type' => 'text',
+			'description' => __( '<strong>This feature is going to be removed in the upcoming version.</strong>', 'shell' ),
+			'label' => __( 'Yahoo Site Verification', 'shell' ),
+			'section' => 'shell_lite_options',
+			'type' => 'text',
 	    )
 	);
 	
