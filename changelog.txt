@@ -106,3 +106,9 @@ Version was updated to 1.8.0
 - Added wpml-config.xml file
 - Added WPML Language Switcher in the Header.
 - Minor CSS updates.
+
+(04/02/2016)
+- Version was updated to 1.8.1
+- a few minor code updates (indenting)
+- Swap the subheadline/content sections to the right order
+- Updated screenshot.png
