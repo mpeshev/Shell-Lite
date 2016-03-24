@@ -424,6 +424,7 @@ function shell_breadcrumb_lists () {
     add_action( 'wp_enqueue_scripts', 'shell_enqueue_style_css' );
     function shell_enqueue_style_css() {
         wp_enqueue_style( 'style', get_stylesheet_uri() );
+        wp_enqueue_style( 'font-Merriweather', 'https://fonts.googleapis.com/css?family=Merriweather:400,700' );
     }
     
     add_action( 'admin_enqueue_scripts', 'shell_enqueue_admin_style_css' );

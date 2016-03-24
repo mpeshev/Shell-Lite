@@ -32,10 +32,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 	display:block;
 }
 
-body {
-	line-height:1;
-}
-
 ol, ul {
 	list-style:none;
 }
@@ -89,6 +85,8 @@ hr.space {
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight:700;
+	font-family: Merriweather, "Open Sans", Arial, sans-serif;
+	color: black;
 }
 
 /* =Base
@@ -100,11 +98,11 @@ html {
 body {
 	background:#f5f5f5;
 	color:#444;
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:14px;
-	line-height:1.5em;
+	font-size:15px;
 	margin:0;
 	padding:0;
+	line-height: 1.8;
+	font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
 /* =Typography
@@ -715,44 +713,32 @@ form div {
 	margin-top:44px;
 }
 
-.featured-button {
-	background:url(images/featured-button.png) 0 0 no-repeat;
-	border:none;
-	cursor:pointer;
-	display:block;
-	height:61px;
-	width:230px;
-}
-
 .featured-button a {
-	color:#444;
-	text-decoration:none;
+	background: linear-gradient( 180deg, #FFD900, #FFB100 );
+	color: #333;
+	padding: 0.7rem 2rem;
+	font-size: 20px;
+	text-transform: uppercase;
+	border: 1px solid #FF9000;
+	border-radius: 10px;
+	display: inline-block;
+	box-shadow: inset 0 1px 0 white;
+	cursor: pointer;
+	text-shadow: 0 1px 0 white;
+	transition: 0.3s;
 }
 
-.featured-button:hover {
-	background-position:0 -61px;
-	color:#444;
-	text-decoration:none;
-}
-
-.featured-button p {
-	font-size:18px;
-	font-weight:700;
-	height:61px;
-	line-height:50px;
-	text-align:center;
-	text-shadow:0 1px #fff;
-	text-transform:uppercase;
-}
-
-.featured-button p a {
-	display:block;
+.featured-button a:hover {
+	cursor: pointer;
+	transition: 0.3s;
+	background: linear-gradient( 180deg, #FFB100, #FFD900 );
 }
 
 /* =Titles
 -------------------------------------------------------------- */
 .featured-title {
 	margin-top:5px;
+	margin-bottom: 40px;
 }
 
 .featured-subtitle {
@@ -809,6 +795,7 @@ form div {
 .post {
 	-ms-word-wrap: break-word;
 	word-wrap: break-word;	
+	border-bottom: 1px solid #f0f0f0;
 }
 
 .post img {
@@ -821,8 +808,19 @@ form div {
 	margin-top:20px;
 }
 
+.post-data a {
+	background: #f0f0f0;
+	border: 1px solid #ddd;
+	display: inline-block;
+	margin: 2px;
+	line-height: 1.2;
+	border-radius: 3px;
+	padding: 2px 4px;
+}
+
 .post-entry {
 	clear:both;
+	font-size: 16px;
 }
 
 .post-meta {
@@ -866,6 +864,12 @@ form div {
 	margin-top: 44px;
 	-ms-word-wrap: break-word;
 	word-wrap: break-word;
+}
+
+#widgets:after {
+	content: '';
+	display: table;
+	clear: both;
 }
 
 #widgets img {
@@ -1587,6 +1591,7 @@ h1 {
 
 h1, h2, h3, h4, h5, h6 {
 	page-break-after:avoid;
+	font-family: Merriweather, "Open Sans", Arial, sans-serif;
 }
 
 ul, ol, dl {
