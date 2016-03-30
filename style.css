@@ -309,7 +309,7 @@ input[type='text'], input[type='password'] {
 
 /* =Buttons
 -------------------------------------------------------------- */
-#searchsubmit, #submit {
+#searchsubmit {
 	background:#444;
 	border:1px solid #000;
 	color:#fff;
@@ -545,6 +545,7 @@ form div {
 	padding:20px;
 	position:relative;
 	width:940px;
+    box-shadow: 0 7px 32px -6px rgba(0, 0, 0, 0.2);
 }
 
 #header {
@@ -745,16 +746,18 @@ form div {
 }
 
 .widget-title {
-	background:#f5f5f5;
-	color:#444;
-	display:block;
-	font-size:13px;
-	font-weight:700;
-	height:33px;
-	line-height:33px;
-	margin:0;
-	padding:0;
-	text-align:center;
+	background: #fff;
+	color: #333;
+	display: block;
+	font-size: 13px;
+	font-weight: 700;
+	height: 33px;
+	line-height: 33px;
+	margin: 0;
+	padding: 5px 10px;
+	padding: 0 10px;
+	text-align: left;
+	border-bottom: 5px solid #006DD5;
 }
 
 .widget-title a {
@@ -796,6 +799,7 @@ form div {
 	-ms-word-wrap: break-word;
 	word-wrap: break-word;	
 	border-bottom: 1px solid #f0f0f0;
+	padding-bottom: 20px;
 }
 
 .post img {
@@ -975,7 +979,7 @@ form div {
 }
 
 #widgets #s {
-	min-width: 240px;
+	min-width: 239px;
 }
 
 /* =Main Menu
@@ -1307,11 +1311,11 @@ form div {
 }
 
 #respond {
-	background:#f0f0f0;
-	border-top:1px solid #fff;
-	clear:both;
-	outline:1px solid #ddd;
-	padding:10px 10px 50px;
+    background: #f9f9f9;
+    border: 1px solid #D8D8D8;
+    clear: both;
+    padding: 20px;
+    box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.06);
 }
 
 #respond label {
@@ -1338,6 +1342,48 @@ form div {
 
 #commentform div.errorlabels label {
 	display:block;
+}
+
+.comment-reply-title {
+	margin-top: 0;
+}
+
+.comment-respond {
+	box-sizing: content-box;
+}
+
+.comment-respond textarea {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 8px 15px;
+}
+
+.comment-respond input[type="text"] {
+	height: auto;
+	padding: 8px 15px;
+}
+
+
+.comment-respond input[type="text"]:focus,
+.comment-respond textarea:focus {
+	box-shadow: 0 0 5px #41B2FF;
+	border-color: #41B2FF;
+}
+
+.form-submit .submit {
+	padding: 10px 20px;
+	background: #333;
+	border: none;
+	display: inline-block;
+	color: white;
+	border: 1px solid #333;
+	border-radius: 2px;
+}
+
+.form-submit .submit:hover {
+	background-color: #fff;
+	border-color: #333;
+	color: black;
 }
 
 /* =WordPress Core
